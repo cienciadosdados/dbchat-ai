@@ -36,8 +36,7 @@ const Header = (props: Props) => {
             </button>
             <span className="w-auto text-left block lg:hidden">{title}</span>
           </div>
-          <span className="w-auto text-center hidden lg:flex justify-center items-center">
-          </span>
+          <span className="w-auto text-center hidden lg:flex justify-center items-center"></span>
         </div>
         <ConversationTabsView />
       </div>

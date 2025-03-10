@@ -53,8 +53,7 @@ const ConnectionList = () => {
       <button
         className={`w-full h-12 rounded-l-lg p-2 mt-1 group ${currentConnectionCtx === undefined && "bg-gray-100 dark:bg-zinc-700 shadow"}`}
         onClick={() => connectionStore.setCurrentConnectionCtx(undefined)}
-      >
-      </button>
+      ></button>
       {connectionList.map((connection) => (
         <Tooltip key={connection.id} title={connection.title} side="right">
           <button
