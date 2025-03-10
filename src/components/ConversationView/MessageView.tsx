@@ -110,7 +110,7 @@ const MessageView = (props: Props) => {
           ) : (
             <>
               <div className="w-auto max-w-[calc(100%-2rem)] flex flex-col justify-start items-start">
-                {message.status === "FAILED" && message.content.includes("OpenAI API Key is missing") ? (
+                {message.status === "FAILED" && message.content.toLowerCase().includes("openai api key is missing") ? (
                   <div className="w-auto max-w-full bg-red-100 dark:bg-red-800 border border-red-300 dark:border-red-600 px-4 py-2 rounded-lg prose prose-neutral dark:prose-invert">
                     <p className="text-red-600 dark:text-red-200">{message.content}</p>
                     <div className="mt-2">
