@@ -12,6 +12,7 @@ import Icon from "../Icon";
 import { CodeBlock } from "../CodeBlock";
 import EngineIcon from "../EngineIcon";
 import ThreeDotsLoader from "./ThreeDotsLoader";
+import Link from "next/link";
 
 interface Props {
   message: Message;
@@ -109,35 +110,49 @@ const MessageView = (props: Props) => {
           ) : (
             <>
               <div className="w-auto max-w-[calc(100%-2rem)] flex flex-col justify-start items-start">
-                <ReactMarkdown
-                  className={`w-auto max-w-full bg-gray-100 dark:bg-zinc-700 px-4 py-2 rounded-lg prose prose-neutral dark:prose-invert ${
-                    message.status === "FAILED" && "border border-red-400 bg-red-100 text-red-500"
-                  }`}
-                  remarkPlugins={[remarkGfm]}
-                  components={{
-                    pre({ node, className, children, ...props }) {
-                      const child = children[0] as ReactElement;
-                      const match = /language-(\w+)/.exec(child.props.className || "");
-                      const language = match ? match[1] : "SQL";
-                      return (
-                        <pre className={`${className || ""} w-full p-0 my-1`} {...props}>
-                          <CodeBlock
-                            key={Math.random()}
-                            messageId={message.id}
-                            language={language || "SQL"}
-                            value={String(child.props.children).replace(/\n$/, "")}
-                            {...props}
-                          />
-                        </pre>
-                      );
-                    },
-                    code({ children }) {
-                      return <code className="px-0">{children}</code>;
-                    },
-                  }}
-                >
-                  {message.content}
-                </ReactMarkdown>
+                {message.status === "FAILED" && message.content.includes("OpenAI API Key is missing") ? (
+                  <div className="w-auto max-w-full bg-red-100 dark:bg-red-800 border border-red-300 dark:border-red-600 px-4 py-2 rounded-lg prose prose-neutral dark:prose-invert">
+                    <p className="text-red-600 dark:text-red-200">{message.content}</p>
+                    <div className="mt-2">
+                      <Link
+                        href="/setting"
+                        className="inline-block px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition-colors"
+                      >
+                        Ir para Configurações
+                      </Link>
+                    </div>
+                  </div>
+                ) : (
+                  <ReactMarkdown
+                    className={`w-auto max-w-full bg-gray-100 dark:bg-zinc-700 px-4 py-2 rounded-lg prose prose-neutral dark:prose-invert ${
+                      message.status === "FAILED" && "border border-red-400 bg-red-100 text-red-500"
+                    }`}
+                    remarkPlugins={[remarkGfm]}
+                    components={{
+                      pre({ node, className, children, ...props }) {
+                        const child = children[0] as ReactElement;
+                        const match = /language-(\w+)/.exec(child.props.className || "");
+                        const language = match ? match[1] : "SQL";
+                        return (
+                          <pre className={`${className || ""} w-full p-0 my-1`} {...props}>
+                            <CodeBlock
+                              key={Math.random()}
+                              messageId={message.id}
+                              language={language || "SQL"}
+                              value={String(child.props.children).replace(/\n$/, "")}
+                              {...props}
+                            />
+                          </pre>
+                        );
+                      },
+                      code({ children }) {
+                        return <code className="px-0">{children}</code>;
+                      },
+                    }}
+                  >
+                    {message.content}
+                  </ReactMarkdown>
+                )}
                 <span className="self-start text-sm text-gray-400 pt-1 pl-1">
                   {dayjs(message.createdAt).locale(settingStore.setting.locale).format("lll")}
                 </span>
