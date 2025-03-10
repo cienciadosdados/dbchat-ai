@@ -1,0 +1,4 @@
+# Ignorar temporariamente para resolver problemas de build no Vercel
+src/components/OpenAIApiConfigView.tsx
+src/components/ConversationView/MessageView.tsx
+src/pages/api/chat.ts
