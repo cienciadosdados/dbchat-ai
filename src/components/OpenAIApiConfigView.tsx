@@ -141,13 +141,22 @@ const OpenAIApiConfigView = () => {
           </>
         ) : (
           <div className="flex flex-col mt-4 p-4 bg-yellow-50 dark:bg-yellow-900 border border-yellow-200 dark:border-yellow-700 rounded-lg">
-            <h3 className="text-base font-semibold text-yellow-800 dark:text-yellow-200">Configuração de API Key não habilitada</h3>
+            <h3 className="text-base font-semibold text-yellow-800 dark:text-yellow-200">
+              Configuração de API Key não habilitada
+            </h3>
             <p className="text-sm text-yellow-700 dark:text-yellow-300 mt-2">
               A configuração de API Key pelo usuário não está habilitada nesta instalação. Para habilitar, o administrador precisa definir a 
-              variável de ambiente <code className="bg-yellow-100 dark:bg-yellow-800 px-1 py-0.5 rounded">NEXT_PUBLIC_ALLOW_SELF_OPENAI_KEY=true</code>.
+              variável de ambiente{' '}
+              <code className="bg-yellow-100 dark:bg-yellow-800 px-1 py-0.5 rounded">
+                NEXT_PUBLIC_ALLOW_SELF_OPENAI_KEY=true
+              </code>
+              .
             </p>
             <p className="text-sm text-yellow-700 dark:text-yellow-300 mt-2">
-              Caso esteja usando Docker, adicione <code className="bg-yellow-100 dark:bg-yellow-800 px-1 py-0.5 rounded">--env NEXT_PUBLIC_ALLOW_SELF_OPENAI_KEY=true</code> 
+              Caso esteja usando Docker, adicione{' '}
+              <code className="bg-yellow-100 dark:bg-yellow-800 px-1 py-0.5 rounded">
+                --env NEXT_PUBLIC_ALLOW_SELF_OPENAI_KEY=true
+              </code>{' '}
               ao comando de execução.
             </p>
           </div>

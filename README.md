@@ -1,5 +1,5 @@
 ![SQL Chat banner](https://raw.githubusercontent.com/sqlchat/sqlchat/main/public/banner.webp)
-
+https://www.mermaidchart.com/raw/9220e014-cbb2-4c68-9a56-b365ba3c186b?theme=light&version=v0.1&format=svg
 <div align="center">
   <h3>SQL Chat</h3>
   <a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fsqlchat%2Fsqlchat&env=OPENAI_API_KEY">
